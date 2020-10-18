@@ -11,12 +11,12 @@ Per rappresentare le coppie usare la classe myPair con due variabili d'istanza
 ### Funzionalità: 
 
 myPair:
-	[x] costruttore
-		[x] con numero di argomenti variabile
-    [x] getKey
-    [x] getValue
-    [x] setKey
-    [x] setValue
+- [x] costruttore
+	- [x] con numero di argomenti variabile
+- [x] getKey
+- [x] getValue
+- [x] setKey
+- [x] setValue
 
 myDict:
     [x] costruttore
