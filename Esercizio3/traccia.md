@@ -1,0 +1,1 @@
+#### traccia. Scrivere una funzione decoratore **decora** che lancia TypeError se uno degli argomenti non è una stringa e restituisce in output una stringa composta dalla concatenazione dei singoli argomenti e del risultato della funzione decorata divisi da spazio.
