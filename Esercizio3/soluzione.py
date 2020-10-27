@@ -1,25 +1,42 @@
-from functools import wraps
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim:fenc=utf-8
+#
+# Copyright © 2020 andreaerk <andreaerk@andreaerk>
+#
+# Distributed under terms of the MIT license.
 
+"""
+Soluzione proposta dalla professoressa
+"""
+from functools import wraps
 
 def decora(function):
     @wraps(function)
-    def wrapper(*args, **kargs):
-        concatenation = ''
-        for arg in args:
-            if not isinstance(arg, str):
+    def wrapper(*args, **kwargs):
+        out = ''
+        # perché non usare kwargs.value() ?
+        for arg in args + tuple(v for k,v in kwargs.items()):
+            if type(arg) != str:
                 raise TypeError
-            else:
-                concatenation += arg + " "
+            out += arg+" "
+        result = str(function(*args, ** kwargs))
+        out += result
+        return out
+    return wrapper
 
-        for karg in kargs.values():
-            if not isinstance(karg, str):
+def decora2(function):
+    @wraps(function)
+    def wrapper(*args, **kwargs):
+        out = ''
+        # provo a usare kwargs.value() ?
+        for arg in args + tuple(kwargs.values()):
+            if type(arg) != str:
                 raise TypeError
-            else:
-                concatenation += karg + " "
-
-        res = function(*args, **kargs)
-        concatenation += str(res)
-        print(concatenation)
+            out += arg+" "
+        result = str(function(*args, ** kwargs))
+        out += result
+        return out
     return wrapper
 
 
@@ -27,7 +44,7 @@ if __name__ == "__main__":
 
     print("Definisco la funzione ciao decorata con @decora. La funzione ciao restituisce il risultato di 2 + 2")
 
-    @decora
+    @decora2
     def ciao(*args, **kargs):
         return 2 + 2
 
