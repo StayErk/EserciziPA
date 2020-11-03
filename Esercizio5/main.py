@@ -31,12 +31,37 @@ def defc(function):
     return wrapper
 
 
+def defc2(maxArgs = None):
+    if maxArgs is None:
+        maxArgs = 2
+    def defc(function):
+        @wraps(function)
+        def wrapper(*args, **kwargs):
+            if len(args) + len(kwargs.items()) > maxArgs:
+                raise TypeError
+            else:
+                frisultati = open("risultato.txt", 'a')
+                risultatoFunzione = function(*args, **kwargs)
+            if not risultatoFunzione is None:
+                frisultati.write(str(risultatoFunzione))
+            if len(args) > 0:
+                frisultati.write(str(args[0]))
+            else:
+                frisultati.write(str(next(iter(kwargs.values()))))
+            frisultati.write('\n')
+            frisultati.close()
+        return wrapper
+    return defc
+
+
+
+
 if __name__ == "__main__":
-    @defc
+    @defc2(2)
     def funzione1(*args, **kwargs):
         return 2 + 2
 
-    @defc
+    @defc2(3)
     def funzione2(*args, **kwargs):
         pass
 
