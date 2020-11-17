@@ -10,6 +10,8 @@
 Scrivere una classe le cui istanze possono avere un'unica variabile di instanza di nome unica
 """
 
+
+""" Modo stupido fatto da me
 class ClasseConUnica:
     class _unica:
         
@@ -28,12 +30,24 @@ class ClasseConUnica:
         if name == "unica":
             return setattr(self._impl, name, value)
 
+"""
+
+class ClasseConUnica:
+    def __init__(self) -> None:
+        self.unica = "unica"
+
+    def __setattr__(self, name: str, value: any) -> None:
+        if name == "unica":
+            super().__setattr__(name, value)
+
 a = ClasseConUnica()
 
 print(a.unica)
 a.ciao = 'hella'
 
-print(a.ciao, a.__dict__.values())
+print(a.__dict__.values())
 
 a.unica = "ciao"
 print(a.unica)
+
+
