@@ -12,7 +12,7 @@ class Pacco:
     @property
     def state(self):
         if self._prec == None: return Pacco.ORDINATO
-        if self._prec != None  and self._succ != None: return Pacco.SPEDITO
+        if self._prec != None and self._succ != None: return Pacco.SPEDITO
         if self._succ == None: return Pacco.RICEVUTO
 
     @state.setter
@@ -41,6 +41,7 @@ class Pacco:
     def prec(self):
         if self._prec is not None:
             self.state = self._prec
+        else: print("il pacco è stato già ordinato")
 
 
 
