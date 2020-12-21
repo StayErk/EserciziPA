@@ -37,6 +37,7 @@ def worker(jobs: JoinableQueue, results: Queue):
         results.put((indiceFile, result))
         jobs.task_done()
 
+
 def cercaParola(nomeFile: str, listaParole: list) -> str:
     f_i = open(nomeFile, 'r')
     text = f_i.read()

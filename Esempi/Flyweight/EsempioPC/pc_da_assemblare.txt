@@ -1,0 +1,1 @@
+Inserisco <class '__main__.PC'> nel file con stato condiviso ['mid tower', 'bianco'] e stato proprio ['i9-9900k', 'rtx 2080Ti']Inserisco <class '__main__.PC'> nel file con stato condiviso ['full tower', 'nero'] e stato proprio ['i7-7700k', 'rtx 2070']
